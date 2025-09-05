@@ -23,7 +23,7 @@ jobs:
       - name: Launch Nix devShell
         uses: nicknovitski/nix-develop@v1
       - name: Build page
-        run: nix develop --command trunk build --public-url ${{ github.event.repository.name }} --release
+        run: nix develop --command trunk build --release
       - name: Deploy page
         uses: JamesIves/github-pages-deploy-action@v4
         with:
@@ -31,3 +31,4 @@ jobs:
             branch: gh-pages
             folder: dist
             single-commit: true
+            clean: true
