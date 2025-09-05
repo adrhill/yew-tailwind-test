@@ -19,6 +19,8 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 18
+      - run: npm install -D tailwindcss postcss autoprefixer
+      - run: npx update-browserslist-db@latest
       - name: rust-toolchain
         uses: actions-rs/toolchain@v1
         with:
