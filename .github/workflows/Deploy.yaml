@@ -24,6 +24,8 @@ jobs:
         uses: nicknovitski/nix-develop@v1
       - name: Build page
         run: nix develop --command trunk build --release
+      - name: Add .nojekyll file
+        run: touch dist/.nojekyll
       - name: Deploy page
         uses: JamesIves/github-pages-deploy-action@v4
         with:
