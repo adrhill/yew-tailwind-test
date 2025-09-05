@@ -38,3 +38,4 @@ jobs:
             folder: dist
             single-commit: true
             clean: true
+            force: true
