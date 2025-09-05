@@ -22,8 +22,12 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Launch Nix devShell
         uses: nicknovitski/nix-develop@v1
+      - name: Install NPM dependencies
+        run: nix develop --command \
+          npm install -D tailwindcss postcss autoprefixer
       - name: Build page
-        run: nix develop --command trunk build --release
+        run: nix develop --command \
+          trunk build --release
       - name: Add .nojekyll file
         run: touch dist/.nojekyll
       - name: Deploy page
