@@ -100,7 +100,7 @@ fn app() -> Html {
         <>
             <div class="prose mx-auto">
                 <h1>{ "RustConf Explorer" }</h1>
-                <h3>{"Videos to watch"}</h3>
+                <h3>{"Click video title to watch:"}</h3>
                 <VideosList videos={videos} on_click={on_video_select.clone()} />
                 // Add spacing between the videos list and the details
                 <div class="h-4"></div>
