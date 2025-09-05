@@ -19,7 +19,7 @@
             wasm-pack
             trunk
             lld
-            nodejs_24
+            nodejs
             tailwindcss
           ];
         };
