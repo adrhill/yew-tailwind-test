@@ -23,7 +23,7 @@ jobs:
       - name: Launch Nix devShell
         uses: nicknovitski/nix-develop@v1
       - name: Build page
-        run: nix develop --command trunk build
+        run: nix develop --command trunk build --public-url "adrianhill.de/yew-tailwind-test" --release
       - name: Deploy page
         uses: JamesIves/github-pages-deploy-action@v4
         with:
