@@ -4,17 +4,25 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     flake-utils.url = "github:numtide/flake-utils";
+    fenix.url = "github:nix-community/fenix";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
+  outputs = { self, nixpkgs, flake-utils, fenix }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        rustWasmTarget = "wasm32-unknown-unknown";
+        rustToolchain = with fenix.packages.${system};
+          combine [
+            latest.rustc
+            latest.cargo
+            targets.${rustWasmTarget}.latest.rust-std
+          ];
       in
       {
         devShells.default = pkgs.mkShell {
           nativeBuildInputs = with pkgs; [
-            rustc
+            rustToolchain
             cargo
             wasm-pack
             trunk

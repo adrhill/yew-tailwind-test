@@ -16,23 +16,23 @@ jobs:
       statuses: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 18
-      - run: npm install -D tailwindcss postcss autoprefixer
-      - run: npx update-browserslist-db@latest
-      - name: rust-toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          target: wasm32-unknown-unknown
-      - name: Download trunk
-        uses: jetli/trunk-action@v0.5.1
+      - name: Check Nix flake inputs
+        uses: DeterminateSystems/flake-checker-action@main
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: Launch Nix devShell
+        uses: nicknovitski/nix-develop@v1
+      - name: Install NPM dependencies
+        run: npm install -D tailwindcss postcss autoprefixer
       - name: Build page
         run: trunk build --release
+      - name: Add .nojekyll file
+        run: touch dist/.nojekyll
       - name: Deploy page
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: dist
+            token: ${{ secrets.GITHUB_TOKEN }}
+            branch: gh-pages
+            folder: dist
+            single-commit: true
+            clean: true
