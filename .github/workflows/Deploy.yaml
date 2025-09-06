@@ -27,6 +27,8 @@ jobs:
           target: wasm32-unknown-unknown
       - name: Download trunk
         uses: jetli/trunk-action@v0.5.1
+      - name: Trunk config
+        run: trunk config show
       - name: Build page
         run: trunk build --release
       - name: Add .nojekyll file
