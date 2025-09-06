@@ -1,4 +1,6 @@
 {
+  "name": "yew-tailwind-test",
+  "version": "0.1.0",
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
