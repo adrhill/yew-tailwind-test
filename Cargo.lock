@@ -1252,5 +1252,6 @@ dependencies = [
 name = "yew-tailwind-test"
 version = "0.1.0"
 dependencies = [
+ "wasm-bindgen",
  "yew",
 ]
