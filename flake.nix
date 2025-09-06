@@ -39,8 +39,8 @@
           nativeBuildInputs = buildInputs;
         };
         defaultPackage = rustPlatform.buildRustPackage {
-          pname = "yew-nix-build";
-          version = "0.1.1";
+          pname = "yew-tailwind-test-nix";
+          version = "0.1.0";
           src = ./.;
 
           nativeBuildInputs = with pkgs; [
@@ -48,25 +48,16 @@
             wasm-bindgen-cli_0_2_100 # match Cargo.toml
             wasm-pack
             trunk
-            lld
-            nodejs
-            nodePackages.npm
             tailwindcss
-            pkgs.pkg-config
-            pkgs.openssl
+            lld
+            # pkgs.pkg-config
+            # pkgs.openssl
           ];
 
           cargoLock = { lockFile = ./Cargo.lock; };
 
           buildPhase = ''
-            set -x
-            echo "Starting npm install..."
-            npm install
-            echo "npm install completed. Starting npx update-browserslist-db..."
-            npx update-browserslist-db@latest
-            echo "npx update-browserslist-db completed. Starting trunk build..."
             trunk build --release --dist $out         
-            echo "trunk build completed."
           '';
         };
       }
