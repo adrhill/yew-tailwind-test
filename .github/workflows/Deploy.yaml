@@ -16,14 +16,17 @@ jobs:
       statuses: write
     steps:
       - uses: actions/checkout@v4
-      - name: Check Nix flake inputs
-        uses: DeterminateSystems/flake-checker-action@main
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: DeterminateSystems/magic-nix-cache-action@main
-      - name: Launch Nix devShell
-        uses: nicknovitski/nix-develop@v1
-      - name: Install NPM dependencies
-        run: npm install -D tailwindcss postcss autoprefixer
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 18
+      - run: npm install
+      - name: rust-toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: wasm32-unknown-unknown
+      - name: Download trunk
+        uses: jetli/trunk-action@v0.5.1
       - name: Build page
         run: trunk build --release
       - name: Add .nojekyll file
