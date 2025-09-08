@@ -1,8 +1,8 @@
 {
-  description = "My Yew & Tailwind project";
+  description = "WASM Test";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     flake-utils.url = "github:numtide/flake-utils";
     fenix.url = "github:nix-community/fenix";
   };
@@ -44,7 +44,8 @@
           nativeBuildInputs = buildInputs;
           cargoLock = { lockFile = ./Cargo.lock; };
 
-          # npm set prefix ~/.local/lib
+          # export HOME=$TMPDIR
+          # npm config set strict-ssl false
           buildPhase = ''
             trunk build --public-url "https://adrianhill.de/wasm-test/" --release --dist $out
           '';
