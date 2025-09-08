@@ -3,7 +3,6 @@ trunk_version = "0.21.14"
 [build]
 target = "index.html"
 dist = "dist"
-public_url = "https://adrianhill.de/yew-tailwind-test/"
 
 [[hooks]]
 stage = "pre_build"

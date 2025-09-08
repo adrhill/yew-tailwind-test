@@ -1,5 +1,5 @@
 {
-  description = "My Yew & Tailwind project";
+  description = "WASM Test";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
@@ -18,48 +18,23 @@
             latest.cargo
             targets.${rustWasmTarget}.latest.rust-std
           ];
-        rustPlatform =
-          pkgs.makeRustPlatform {
-            rustc = rustToolchain;
-            cargo = rustToolchain;
-          };
-        buildInputs = with pkgs; [
+        rustPlatform = pkgs.makeRustPlatform {
+          rustc = rustToolchain;
+          cargo = rustToolchain;
+        };
+      in {
+        devShells.default = pkgs.mkShell {
+          nativeBuildInputs = with pkgs; [
             rustToolchain
-            wasm-bindgen-cli_0_2_100 # match Cargo.toml
-            wasm-pack
             trunk
             lld
             nodejs
-            node2nix
+            nodePackages.npm
+            nodePackages.autoprefixer
+            nodePackages.postcss
+            nodePackages.tailwindcss
             tailwindcss
           ];
-      in
-      {
-        devShells.default = pkgs.mkShell {
-          nativeBuildInputs = buildInputs;
         };
-        defaultPackage = rustPlatform.buildRustPackage {
-          pname = "yew-tailwind-test-nix";
-          version = "0.1.0";
-          src = ./.;
-
-          nativeBuildInputs = with pkgs; [
-            rustToolchain
-            wasm-bindgen-cli_0_2_100 # match Cargo.toml
-            wasm-pack
-            trunk
-            tailwindcss
-            lld
-            # pkgs.pkg-config
-            # pkgs.openssl
-          ];
-
-          cargoLock = { lockFile = ./Cargo.lock; };
-
-          buildPhase = ''
-            trunk build --release --dist $out         
-          '';
-        };
-      }
-    );
+      });
 }
