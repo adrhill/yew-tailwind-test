@@ -27,12 +27,12 @@ jobs:
           target: wasm32-unknown-unknown
       - name: Download trunk
         uses: jetli/trunk-action@v0.5.1
-      - name: Trunk config
-        run: trunk config show
+        with:
+          version: 'v0.21.7'
       - name: Build page
         run: trunk build --release
-      - name: Add .nojekyll file
-        run: touch dist/.nojekyll
+      - run: touch dist/.nojekyll
+      - run: ls -lah /dist
       - name: Deploy page
         uses: JamesIves/github-pages-deploy-action@v4
         with:
