@@ -1117,6 +1117,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "wasm-test"
+version = "0.1.0"
+dependencies = [
+ "yew",
+]
+
+[[package]]
 name = "web-sys"
 version = "0.3.78"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1246,11 +1253,4 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 2.0.106",
-]
-
-[[package]]
-name = "yew-tailwind-test"
-version = "0.1.0"
-dependencies = [
- "yew",
 ]

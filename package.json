@@ -1,5 +1,5 @@
 {
-  "name": "yew-tailwind-test",
+  "name": "wasm-test",
   "version": "0.1.0",
   "devDependencies": {
     "autoprefixer": "^10.4.21",

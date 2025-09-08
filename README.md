@@ -1,4 +1,4 @@
-# yew-tailwind-test
+# wasm-test
 
 > [!WARNING]  
 > This is a toy project to learn Rust, WASM, Yew, Tailwind and Nix.
