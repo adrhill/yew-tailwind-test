@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://adrianhill.de/wasm-test/tailwind-30de7ed3923a3cdc.css" integrity="sha384-GvLp7g9uoJkzXq3hAyuFF69dwaqLGAfwNfqcUUM/W0VSxQPJwpNm9jdno3hgFh82"/>
+    
+<script type="module">
+import init, * as bindings from 'https://adrianhill.de/wasm-test/wasm-test-52810da54aa9bbd7.js';
+const wasm = await init({ module_or_path: 'https://adrianhill.de/wasm-test/wasm-test-52810da54aa9bbd7_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script>
+    
+    <title>My first Yew App</title>
+    <base href="https://adrianhill.de/wasm-test/" />
+  <link rel="modulepreload" href="https://adrianhill.de/wasm-test/wasm-test-52810da54aa9bbd7.js" crossorigin="anonymous" integrity="sha384-ht7MLmkOxmMolqHyamCmV11PHqKyuC5aana+P4Fe3vB3GQq04FZ8c+dl7V9ZBQ/F"><link rel="preload" href="https://adrianhill.de/wasm-test/wasm-test-52810da54aa9bbd7_bg.wasm" crossorigin="anonymous" integrity="sha384-9m5XUlh+5aVttUkiR5Fhc6x+Ee2Wc8geqaZVJeNoyl72HAxvRcoWKZDklP+zkYeP" as="fetch" type="application/wasm"></head>
+  <body></body>
+</html>
