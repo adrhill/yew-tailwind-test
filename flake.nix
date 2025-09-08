@@ -57,7 +57,7 @@
           cargoLock = { lockFile = ./Cargo.lock; };
 
           buildPhase = ''
-            trunk build --release --dist $out         
+            trunk build --public-url "https://adrianhill.de/wasm-test/" --release --dist $out
           '';
         };
       }

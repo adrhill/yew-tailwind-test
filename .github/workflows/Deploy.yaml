@@ -30,9 +30,8 @@ jobs:
         with:
           version: 'v0.21.14'
       - name: Build page
-        run: trunk build --release
+        run: trunk build --public-url "https://adrianhill.de/wasm-test/" --release
       - run: touch dist/.nojekyll
-      - run: ls -lah dist/
       - name: Deploy page
         uses: JamesIves/github-pages-deploy-action@v4
         with:
