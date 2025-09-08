@@ -28,7 +28,7 @@ jobs:
       - name: Download trunk
         uses: jetli/trunk-action@v0.5.1
         with:
-          version: 'v0.21.7'
+          version: 'v0.21.14'
       - name: Build page
         run: trunk build --release
       - run: touch dist/.nojekyll
