@@ -32,7 +32,7 @@ jobs:
       - name: Build page
         run: trunk build --release
       - run: touch dist/.nojekyll
-      - run: ls -lah /dist
+      - run: ls -lah dist/
       - name: Deploy page
         uses: JamesIves/github-pages-deploy-action@v4
         with:
